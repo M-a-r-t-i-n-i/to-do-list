@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+// basics
+import "./App.css";
+// importing components
+import TaskTextField from "./components/TaskTextField";
+import Button from "./components/Button";
+import TaskList from "./components/TaskList";
+// import Comments from "./components/Comments";
+import Heading from "./components/Heading";
+import { useState } from "react";
 
 function App() {
+  const dummyTaskList = ["Buy shampoo", "Be awesome", "Smile every morning"];
+  const listHeading = "SomethingElse";
+  const headingText = "Example";
+  const [textInput, setTextInput] = useState("");
+  const [data, setData] = useState(dummyTaskList);
+  const createTask = () => {
+    setData([...data, textInput]);
+  };
+  // const []
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <TaskTextField setTextInput={setTextInput} />
+      <Button buttonName="Confirm" onClickHandler={createTask} />
+      <p>{textInput}</p>
+      <TaskList listName={listHeading} listItems={data} />
+      {/* <Comments required={true} /> */}
+      {/* <Heading headingText={headingText} headingType="h1" /> */}
+      {/* <Heading headingText={headingText} headingType="h6" /> */}
+    </>
   );
 }
 
