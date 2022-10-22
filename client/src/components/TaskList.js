@@ -1,11 +1,11 @@
 import Button from "./Button";
-
 function TaskList(props) {
   console.log(props);
   // const dummyTaskList = props.listItems; // or props.dummyTaskList;
   const items = props.listItems.map((item, index) => (
     <li>
-      {item}
+      {item.text}
+      <span>{item.id}</span>
       {/* <span>{index + 1}</span> */}
       <Button buttonName="Delete" />
       <Button buttonName="Edit" />
@@ -13,7 +13,6 @@ function TaskList(props) {
   ));
   // dummyTaskList.map((item) => item, 0);
   // next step: check if listItems property is an array before mapping over it
-
   return (
     <>
       {/* <Items>{props.listItems}</Items> */}
@@ -23,5 +22,4 @@ function TaskList(props) {
     </>
   );
 }
-
 export default TaskList;

@@ -7,15 +7,19 @@ import TaskList from "./components/TaskList";
 // import Comments from "./components/Comments";
 import Heading from "./components/Heading";
 import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 function App() {
   const dummyTaskList = ["Buy shampoo", "Be awesome", "Smile every morning"];
+
   const listHeading = "SomethingElse";
   const headingText = "Example";
-  const [textInput, setTextInput] = useState("");
-  const [data, setData] = useState(dummyTaskList);
+  const [textInput, setTextInput] = useState({});
+  const [data, setData] = useState([]);
+  const [id, setId] = useState("");
   const createTask = () => {
-    setData([...data, textInput]);
+    setData([...data], { text: textInput, id: uuidv4() });
+    console.log(data);
   };
   // const []
   return (
@@ -30,5 +34,4 @@ function App() {
     </>
   );
 }
-
 export default App;
