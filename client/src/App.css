@@ -74,3 +74,9 @@ h1 > span {
 .task__list-item span {
   word-break: break-all;
 }
+
+.task__list-item-input[disabled] {
+  appearance: none;
+  background: transparent;
+  border: none;
+}

@@ -36,7 +36,6 @@ function App() {
           listName={"My To Do List"}
           listItems={data}
           setData={setData}
-          data={data}
         />
       </section>
     </main>
