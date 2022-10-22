@@ -1,5 +1,9 @@
 function Button(props) {
-  return <button onClick={props.onClickHandler}>{props.buttonName}</button>;
+  return (
+    <button type="button" onClick={props.eventHandler}>
+      {props.buttonName}
+    </button>
+  );
 }
 
 export default Button;

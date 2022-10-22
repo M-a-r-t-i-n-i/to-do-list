@@ -1,9 +1,10 @@
-function TaskTextField(props) {
+function TaskTextField({ textInput, setTextInput }) {
   return (
     <input
       type="text"
+      value={textInput}
       onChange={(event) => {
-        props.setTextInput(event.target.value);
+        setTextInput(event.target.value);
       }}
     />
   );

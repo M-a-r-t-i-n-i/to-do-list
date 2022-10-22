@@ -1,37 +1,46 @@
-// basics
+import { useState } from "react";
+
+// Dependencies
+import { v4 as uuid4 } from "uuid";
+
+// Styling
 import "./App.css";
-// importing components
-import TaskTextField from "./components/TaskTextField";
+
+// Components
 import Button from "./components/Button";
 import TaskList from "./components/TaskList";
-// import Comments from "./components/Comments";
-import Heading from "./components/Heading";
-import { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
+import TaskTextField from "./components/TaskTextField";
 
 function App() {
-  const dummyTaskList = ["Buy shampoo", "Be awesome", "Smile every morning"];
-
-  const listHeading = "SomethingElse";
-  const headingText = "Example";
-  const [textInput, setTextInput] = useState({});
+  const [textInput, setTextInput] = useState("");
   const [data, setData] = useState([]);
-  const [id, setId] = useState("");
+
   const createTask = () => {
-    setData([...data], { text: textInput, id: uuidv4() });
-    console.log(data);
+    if (textInput === "") return;
+
+    const id = uuid4();
+
+    setData([...data, { id: id, text: textInput }]);
+
+    setTextInput("");
   };
-  // const []
+
   return (
-    <>
-      <TaskTextField setTextInput={setTextInput} />
-      <Button buttonName="Confirm" onClickHandler={createTask} />
-      <p>{textInput}</p>
-      <TaskList listName={listHeading} listItems={data} />
-      {/* <Comments required={true} /> */}
-      {/* <Heading headingText={headingText} headingType="h1" /> */}
-      {/* <Heading headingText={headingText} headingType="h6" /> */}
-    </>
+    <main>
+      <section className="task__input">
+        <TaskTextField setTextInput={setTextInput} textInput={textInput} />
+        <Button buttonName="Confirm" eventHandler={createTask} />
+      </section>
+      <section className="task__list-container">
+        <TaskList
+          listName={"My To Do List"}
+          listItems={data}
+          setData={setData}
+          data={data}
+        />
+      </section>
+    </main>
   );
 }
+
 export default App;

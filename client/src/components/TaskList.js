@@ -1,25 +1,30 @@
-import Button from "./Button";
+import TaskListItem from "./TaskListItem";
+
 function TaskList(props) {
-  console.log(props);
-  // const dummyTaskList = props.listItems; // or props.dummyTaskList;
-  const items = props.listItems.map((item, index) => (
-    <li>
-      {item.text}
-      <span>{item.id}</span>
-      {/* <span>{index + 1}</span> */}
-      <Button buttonName="Delete" />
-      <Button buttonName="Edit" />
-    </li>
-  ));
-  // dummyTaskList.map((item) => item, 0);
-  // next step: check if listItems property is an array before mapping over it
+  const { listName, listItems, setData, data } = props;
+
+  const fallbackMessage =
+    "Hmm. Nothing to do? Might be time to start adding new tasks.";
+
   return (
     <>
-      {/* <Items>{props.listItems}</Items> */}
-      <h2>{props.listName}</h2>
-      <ul>{items}</ul>
-      {/* <li>{props.listItems[0]}</li> */}
+      <h1>
+        <p>{listName}</p>
+
+        {listItems.length > 0 ? (
+          <span>Number of Tasks: {listItems.length}</span>
+        ) : null}
+      </h1>
+
+      {listItems.length > 0 ? (
+        <ul className="task__list">
+          <TaskListItem listItems={listItems} setData={setData} data={data} />
+        </ul>
+      ) : (
+        <p>{fallbackMessage}</p>
+      )}
     </>
   );
 }
+
 export default TaskList;
