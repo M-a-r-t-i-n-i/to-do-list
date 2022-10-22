@@ -1,38 +1,76 @@
-.App {
+main {
+  display: grid;
+  gap: 2rem;
+  height: 100vh;
+  grid-template-columns: minmax(0, 1fr);
+  padding: 5vw;
+  place-content: start center;
+  place-items: start center;
+}
+
+main .task__input {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  width: min(30rem, 100%);
+}
+
+main section > * {
+  font-size: 1rem;
+  padding: 1rem;
+  width: 100%;
+}
+
+h1 {
+  display: flex;
+  flex-direction: column;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h1 > p {
+  font-size: min(3rem, 5vw);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+h1 > span {
+  font-size: 1rem;
+  min-height: 1rem;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+.task__list-container {
+  display: grid;
+  place-content: center;
+  width: min(50rem, 100%);
+}
+
+.task__list {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.task__list-item {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  padding: 1rem;
+  place-items: center start;
+  width: 100%;
+}
+
+.task__list-item:nth-child(odd) {
+  background-color: #f5f5f5;
+}
+
+.task__list-item div {
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 1rem;
 }
 
-.App-link {
-  color: #61dafb;
+.task__list-item button {
+  flex: 0 0 50%;
+  padding: 1rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.task__list-item span {
+  word-break: break-all;
 }
