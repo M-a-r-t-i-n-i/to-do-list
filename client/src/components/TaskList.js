@@ -4,7 +4,7 @@ function TaskList(props) {
   const { listName, listItems, setData, data } = props;
 
   const fallbackMessage =
-    "Hmm. Nothing to do? Might be time to start adding new tasks.";
+    "Hmm. Nothing to do? Might be time to start adding some new tasks.";
 
   return (
     <>
